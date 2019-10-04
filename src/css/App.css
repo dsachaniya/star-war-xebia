@@ -1,0 +1,9 @@
+.menu {
+  background-color: blueviolet;
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+}
+.header {
+  height: 50px;
+}
