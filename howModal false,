@@ -1,0 +1,18 @@
+[33mcommit 0cbc1e71e25ca5e4c80e12de7504d5a7820c007c[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Merge: 6c4612d a094a30
+Author: dsachaniya <darshan.sachaniya@bacancytechnology.com>
+Date:   Sat Oct 5 03:05:40 2019 +0530
+
+    allowed unrelated histories
+
+[33mcommit 6c4612dfffad67b029e9486b6101952ec671eeed[m[33m ([m[1;31morigin/first-branch[m[33m, [m[1;32mfirst-branch[m[33m)[m
+Author: dsachaniya <darshan.sachaniya@bacancytechnology.com>
+Date:   Sat Oct 5 02:55:44 2019 +0530
+
+    inital commit xebia-star-war demo
+
+[33mcommit a094a3004ce778955f99e40a9e56078425fc0d89[m
+Author: dsachaniya <dms94260@gmail.com>
+Date:   Sat Oct 5 02:49:13 2019 +0530
+
+    Initial commit

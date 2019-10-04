@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { logoutUser } from "./../../redux/actions";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { Button, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import { Button, Navbar, NavbarBrand } from 'reactstrap';
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -34,7 +34,7 @@ class Header extends Component {
       <div className="header">
            <Navbar color="faded" light style={{backgroundColor:"#007bff"}}>
           <NavbarBrand href="/" className="mr-auto"  >
-          <img src="icon.png" width="40" height="40" className="mr-4"/>
+          <img src="icon.png" alt="star-war-icon" width="40" height="40" className="mr-4"/>
           {site}</NavbarBrand>
           {user.isLoggedIn ?
           

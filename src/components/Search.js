@@ -23,7 +23,6 @@ class Search extends Component {
 		this.state = {
 			planets: [],
 			totalPopulation: 0,
-			planetDetails: "",
 			showModal: false,
 			activeName: ""
 		};
@@ -46,13 +45,12 @@ class Search extends Component {
 							element.population &&
 							element.population !== "unknown"
 						) {
-							totalPopulation += parseFloat(element.population);
+							totalPopulation += parseInt(element.population);
 						}
 					}
 				}
 
 				this.setState({ totalPopulation: totalPopulation });
-				console.log(totalPopulation);
 				return null;
 			}
 		} else {
@@ -69,14 +67,13 @@ class Search extends Component {
 
 	onClickViewDetails = planet => {
 		this.setState({
-			planetDetails: planet,
 			activeName: planet.name
 		});
 		this.toggle();
 	};
 
 	renderPlanets = planets => {
-		const { planetDetails, activeName } = this.state;
+		const { activeName } = this.state;
 		const usablePlanets = planets.filter(
 			planet =>
 				planet.name !== "unknown" && planet.population !== "unknown"
@@ -85,7 +82,7 @@ class Search extends Component {
 		usablePlanets.sort(
 			(a, b) => parseFloat(b.population) - parseFloat(a.population)
 		);
-		return usablePlanets.map((planet, index) => {
+		return usablePlanets.map(planet => {
 			const percentage = (
 				(planet.population * 100) /
 				totalPopulation
@@ -97,19 +94,21 @@ class Search extends Component {
 							<b>{planet.name}</b>
 						</CardTitle>
 						<CardText style={{ marginBottom: 2 }}>
-							Planet Population: <b>{planet.population}</b><br/>
-							Total Percentage of total population: <b>{percentage}%</b>
+							Planet Population: <b>{planet.population}</b>
+							<br />
+							Total Percentage of total population:{" "}
+							<b>{percentage}%</b>
 						</CardText>
-							<Progress
-								value={Math.ceil(percentage)}
-								style={{ marginTop: 4 }}
-							/>
+						<Progress
+							value={Math.ceil(percentage)}
+							style={{ marginTop: 4 }}
+						/>
 						<button
 							className="btn btn-info mt-2"
 							onClick={() =>
 								this.onClickViewDetails(planet, planet.name)
 							}
-							key={planet.name}
+							key={`${planet.name}${planet.surface_water}`}
 						>
 							View Details
 						</button>
@@ -120,36 +119,34 @@ class Search extends Component {
 						>
 							<Card>
 								<CardBody>
-									<tbody>
-										<tr>
-											<th>Name</th>
-											<td>{planetDetails.name}</td>
-										</tr>
-										<tr>
-											<th>Surface Water (in %)</th>
-											<td>
-												{planetDetails.surface_water}
-											</td>
-										</tr>
-										<tr>
-											<th>Gravity</th>
-											<td>{planetDetails.gravity}</td>
-										</tr>
-										<tr>
-											<th>Orbital Period</th>
-											<td>
-												{planetDetails.orbital_period}
-											</td>
-										</tr>
-										<tr>
-											<th>Diameter</th>
-											<td>{planetDetails.diameter}</td>
-										</tr>
-										<tr>
-											<th>Population</th>
-											<td>{planetDetails.population}</td>
-										</tr>
-									</tbody>
+									<table>
+										<tbody>
+											<tr>
+												<th>Name</th>
+												<td>{planet.name}</td>
+											</tr>
+											<tr>
+												<th>Surface Water (in %)</th>
+												<td>{planet.surface_water}</td>
+											</tr>
+											<tr>
+												<th>Gravity</th>
+												<td>{planet.gravity}</td>
+											</tr>
+											<tr>
+												<th>Orbital Period</th>
+												<td>{planet.orbital_period}</td>
+											</tr>
+											<tr>
+												<th>Diameter</th>
+												<td>{planet.diameter}</td>
+											</tr>
+											<tr>
+												<th>Population</th>
+												<td>{planet.population}</td>
+											</tr>
+										</tbody>
+									</table>
 								</CardBody>
 							</Card>
 						</Collapse>
@@ -160,7 +157,7 @@ class Search extends Component {
 	};
 
 	render() {
-		const { planetDetails, planets } = this.state;
+		const { planets } = this.state;
 		return (
 			<Container>
 				<Row>
